@@ -23,12 +23,12 @@ public class KasirSalon {
 
         //---Hitung jumlah harga---//
         totalHrg = hrgBarang * jmlBarang;
+        System.out.println("Total harga barang : " + totalHrg);
 
         //---Hitung uang kembalian---//
         System.out.println("Masukkan jumlah uang yang diterima ");
         uangDiterima = sc.nextInt();
         uangKembalian = uangDiterima - totalHrg;
-        System.out.println("Uang kembalian" + uangKembalian);
 
         //---Cetak rincian pembelian---//
         System.out.println("Struk pembelian");

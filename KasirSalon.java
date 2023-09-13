@@ -27,12 +27,8 @@ public class KasirSalon {
         System.out.println("Jumlah barang : " + jmlBarang);
         System.out.println("Total harga : " + totalHrg);
         System.out.println("Uang diterima : " + uangDiterima);
-        System.out.println("Uang kembalian : " + uangKembalian);
+        System.out.println("Uang kembalian anda adalah : " + uangKembalian);
         System.out.println("Terima kasih terlah datang disalon kami");
 
-
-        System.out.println("Uang kembalian anda adalah" + uangKembalian);
-
-        System.out.println("Struk");
     }
 }

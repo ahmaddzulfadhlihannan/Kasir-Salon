@@ -41,5 +41,6 @@ public class KasirSalon {
         System.out.printf("\nUang kembalian anda adalah : %f", uangKembalian);
         System.out.printf("\nTerima kasih telah datang disalon kami");
 
+        sc.close();
     }
 }

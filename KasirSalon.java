@@ -10,20 +10,20 @@ public class KasirSalon {
         // Variabel
         int jumlahBarang, jumlahJenis, i = 0;
         double harga, hargaBarang, diskon = 0, totalHarga = 0, bayar, uangDiterima, kembalian;
-        String namaBarang, membership = "", user;
+        String namaBarang, membership, user;
 
         // Input jumlah jenis barang yang dibeli
-        System.out.println("Masukkan jumlah jenis barang");
+        System.out.printf("Masukkan jumlah jenis barang\t:\t");
         jumlahJenis = sc.nextInt();
 
         // Input membership
-        System.out.println("Apakah pelanggan memiliki membership? (y/t)");
+        System.out.printf("Punya membership? (y/t)\t\t:\t");
         membership = sc.next();
 
         // Jika memiliki membership
         if (membership.equalsIgnoreCase("y")) {
             // Input user
-            System.out.println("Masukkan user member");
+            System.out.printf("Masukkan user member\t\t:\t");
             user = sc.next();
             // Jika user benar
             if (user.equalsIgnoreCase("king1111") || user.equalsIgnoreCase("tatsumaki2222")
@@ -31,11 +31,11 @@ public class KasirSalon {
                 // Perulangan untuk menghitung total harga
                 while (i < jumlahJenis) {
                     // Input nama, harga, dan jumlah barang yang dibeli
-                    System.out.println("Masukkan nama barang");
+                    System.out.printf("Masukkan nama barang\t\t:\t");
                     namaBarang = sc.next();
-                    System.out.println("Masukkan harga barang");
+                    System.out.printf("Masukkan harga barang\t\t:\t");
                     hargaBarang = sc.nextDouble();
-                    System.out.println("Masukkan jumlah barang");
+                    System.out.printf("Masukkan jumlah barang\t\t:\t");
                     jumlahBarang = sc.nextInt();
 
                     // Perhitungan harga dan total harga
@@ -54,23 +54,23 @@ public class KasirSalon {
 
                 // Perhitungan bayar
                 bayar = totalHarga - (totalHarga * diskon);
-                System.out.println("Total harga yang perlu dibayar : " + bayar);
+                System.out.printf("Total harga yang perlu dibayar\t:\t" + bayar + "\n");
                 // Input uang diterima untuk menghitung kembalian
-                System.out.println("Uang yang diterima");
+                System.out.printf("Uang yang diterima\t\t:\t");
                 uangDiterima = sc.nextDouble();
 
                 // Syarat kembalian
                 if (uangDiterima >= bayar) {
                     kembalian = uangDiterima - bayar;
-                    System.out.printf("Kembalian %.2f", kembalian);
+                    System.out.printf("Kembalian\t\t\t:\t%f", kembalian);
                 } else {
                     kembalian = bayar - uangDiterima;
-                    System.out.printf("Uang kurang %.2f", kembalian);
+                    System.out.printf("Uang kurang\t\t\t:\t%f", kembalian);
                 }
             }
             // Jika input user salah
             else {
-                System.out.println("User salah");
+                System.out.printf("User salah");
             }
         }
 
@@ -79,11 +79,11 @@ public class KasirSalon {
             // Perulangan untuk menghitung total harga
             while (i < jumlahJenis) {
                 // Input nama, harga, dan jumlah barang yang dibeli
-                System.out.println("Masukkan nama barang");
+                System.out.printf("Masukkan nama barang\t\t:\t");
                 namaBarang = sc.next();
-                System.out.println("Masukkan harga barang");
+                System.out.printf("Masukkan harga barang\t\t:\t");
                 hargaBarang = sc.nextDouble();
-                System.out.println("Masukkan jumlah barang");
+                System.out.printf("Masukkan jumlah barang\t\t:\t");
                 jumlahBarang = sc.nextInt();
 
                 // Perhitungan harga dan total harga
@@ -103,25 +103,25 @@ public class KasirSalon {
 
             // Perhitungan bayar
             bayar = totalHarga - (totalHarga * diskon);
-            System.out.println("Total harga yang perlu dibayar : " + bayar);
+            System.out.printf("Total harga yang perlu dibayar\t:\t" + bayar + "\n");
 
             // Input uang diterima untuk menghitung kembalian
-            System.out.println("Uang yang diterima");
+            System.out.printf("Uang yang diterima\t\t:\t");
             uangDiterima = sc.nextDouble();
 
             // Syarat kembalian
             if (uangDiterima >= bayar) {
                 kembalian = uangDiterima - bayar;
-                System.out.printf("Kembalian %.2f", kembalian);
+                System.out.printf("Kembalian\t\t\t:\t%f", kembalian);
             } else {
                 kembalian = bayar - uangDiterima;
-                System.out.printf("Uang kurang %.2f", kembalian);
+                System.out.printf("Uang kurang\t\t\t:\t%f", kembalian);
             }
 
         }
         // Jika input membership salah
         else {
-            System.out.println("Input membership salah");
+            System.out.printf("Input membership salah");
         }
 
         // Tutup scanner

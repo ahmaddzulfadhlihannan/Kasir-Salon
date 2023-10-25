@@ -23,28 +23,23 @@ public class FiturUtamaPembayaran {
             harga[i] = sc.nextDouble();
             System.out.print("Masukkan jumlah barang\t" + (i+1) + "\t\t:\t");
             jumlahBarang[i] = sc.nextInt();
+            //Perhitungan total harga dan total pembelian
             totalHarga[i] = (double) harga[i] * jumlahBarang[i];
             totalPembelian += totalHarga[i];
         }
+        //Perhitungan uang kembalian
         System.out.println("-----------------------------------------------------------");
         System.out.println("Total pembelian\t:\t" + totalPembelian);
         System.out.print("Uang diterima\t:\t");
         uangDiterima = sc.nextDouble();
-        if (uangDiterima >= totalPembelian) {
-            kembalian = uangDiterima - totalPembelian;
-            System.out.println("Uang kembalian\t:\t" + kembalian);
-        }
-        else {
-            kembalian = totalPembelian - uangDiterima;
-            System.out.println("Uang kurang\t:\t" + kembalian);
-        }
+        kembalian = uangDiterima - totalPembelian;
+        System.out.println("Uang kembalian\t:\t" + kembalian);
         System.out.println("-----------------------------------------------------------");
 
         //Struk pembelian
         System.out.printf("Nama Barang\tHarga Barang\tJumlah Barang\ttotal Harga\n");
         for (int i = 0; i < jumlahJenis; i++ ) {
             System.out.printf((i+1) + "." + namaBarang[i] + "\t\t" + harga[i] + "\t\t" + jumlahBarang[i] + "\t\t" + totalHarga[i] + "\n");
-        
         }
         System.out.println("-----------------------------------------------------------");
         System.out.println("Total pembelian\t:\t" + totalPembelian);

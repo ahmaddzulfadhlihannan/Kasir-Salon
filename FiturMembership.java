@@ -36,8 +36,4 @@ public class FiturMembership {
             System.out.println("Bukan pelanggan");
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 254c9ce26f88c7c66cabd1d9497d00ddc82fe8b8

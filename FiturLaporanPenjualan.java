@@ -39,7 +39,7 @@ public class FiturLaporanPenjualan {
             System.out.print("Apakah Anda ingin memasukkan data? (y/n) : ");
             String lanjut = sc.nextLine();
             if (lanjut.equalsIgnoreCase("n")) {
-                break; 
+                break;  
             }
         }
     }

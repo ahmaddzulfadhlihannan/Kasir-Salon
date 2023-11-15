@@ -16,7 +16,7 @@ public class FiturUtamaPembayaran {
         double harga[] = new double[jumlahJenis], totalHarga[] = new double[jumlahJenis], totalPembelian = 0,
                 uangDiterima, kembalian;
 
-        // Pembelian
+        // Transaksi pelanggan
         for (int i = 0; i < jumlahJenis; i++) {
             System.out.printf("Masukkan nama barang\t%d\t\t:\t", (i + 1));
             namaBarang[i] = sc.next();

@@ -15,7 +15,6 @@ public class FiturPendataanStokBarang {
     static void tampilkanMenu() {
         Scanner scanner = new Scanner(System.in);
         int pilihan;
-
         do {
             System.out.println("Menu:");
             System.out.println("1. Lihat Stok Barang");

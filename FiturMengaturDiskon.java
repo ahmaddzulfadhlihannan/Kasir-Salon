@@ -1,36 +1,47 @@
 import java.util.Scanner;
 
-public class FiturMengaturDiskon {
+public class FiturMengaturDiskon {    
     public static void main(String[] args) {
-        
-        //Scanner
         Scanner sc = new Scanner(System.in);
-        
-        //Variabel
-        double totHarga, potDis, bayar;
-        
-        //Input total pembelian
-        System.out.print("Total Pembelian  : ");
-        totHarga = sc.nextDouble();
 
-        //Ketentuan diskon
-        if (totHarga>=300000) {
-            potDis= totHarga*0.15;
-        } else if (100000<= totHarga) {
-            potDis= totHarga*0.10;
-        } else if (60000<= totHarga) {
-            potDis= totHarga*0.05;
-        } else {
-            potDis= 0;
+        System.out.print("Masukkan jumlah transaksi: ");
+        int jumlahTransaksi = sc.nextInt();
+
+        double[][] dataTransaksi = new double[jumlahTransaksi][3];
+
+        for (int i = 0; i < jumlahTransaksi; i++) {
+            System.out.print("Total Pembelian Transaksi ke-" + (i + 1) + ": ");
+            dataTransaksi[i][0] = sc.nextDouble();
+        
+            dataTransaksi[i][1] = Diskon(dataTransaksi[i][0]);
+
+            dataTransaksi[i][2] = dataTransaksi[i][0] - dataTransaksi[i][1];
         }
 
-        //bayar
-        bayar = totHarga-potDis;
-        
-        //Riwayat diskon
-        System.out.println("Potongan Diskon : " +potDis);
-        System.out.println("Bayar           : " +bayar);
+        System.out.println("\nHasil Transaksi:");
+        for (int i = 0; i < jumlahTransaksi; i++) {
+            System.out.println("\nTransaksi ke-" + (i + 1));
+            System.out.println("Potongan Diskon : " + dataTransaksi[i][1]);
+            System.out.println("Bayar           : " + dataTransaksi[i][2]);
+        }
 
         sc.close();
     }
+
+    public static double Diskon(double totalPembelian) {
+        double potonganDiskon;
+    
+        if (totalPembelian >= 300000) {
+            potonganDiskon = totalPembelian * 0.15;
+        } else if (100000 <= totalPembelian) {
+            potonganDiskon = totalPembelian * 0.10;
+        } else if (60000 <= totalPembelian) {
+            potonganDiskon = totalPembelian * 0.05;
+        } else {
+            potonganDiskon = 0;
+        }
+    
+        return potonganDiskon;
+    }
 }
+

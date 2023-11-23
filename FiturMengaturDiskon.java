@@ -11,10 +11,8 @@ public class FiturMengaturDiskon {
 
         for (int i = 0; i < jumlahTransaksi; i++) {
             System.out.print("Total Pembelian Transaksi ke-" + (i + 1) + ": ");
-            dataTransaksi[i][0] = sc.nextDouble();
-        
+            dataTransaksi[i][0] = sc.nextDouble();       
             dataTransaksi[i][1] = Diskon(dataTransaksi[i][0]);
-
             dataTransaksi[i][2] = dataTransaksi[i][0] - dataTransaksi[i][1];
         }
 

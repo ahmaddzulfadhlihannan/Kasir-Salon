@@ -42,7 +42,6 @@ public class FiturPendataanStokBarang {
 
     static void lihatStok() {
         System.out.println("Stok Barang:");
-
         for (int kategori = 0; kategori < kategoriBarang.length; kategori++) {
             System.out.println("Kategori: " + kategoriBarang[kategori]);
             for (int i = 0; i < barang[kategori].length; i++) {
@@ -56,7 +55,6 @@ public class FiturPendataanStokBarang {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Input Stok Barang:");
-
         for (int kategori = 0; kategori < kategoriBarang.length; kategori++) {
             System.out.println("Kategori: " + kategoriBarang[kategori]);
             for (int i = 0; i < barang[kategori].length; i++) {

@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class FiturPendataanStokBarang {
     static String[] kategoriBarang = {"Perawatan Rambut", "Rias Wajah"};
     static String[][] barang = {

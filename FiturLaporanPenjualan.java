@@ -1,13 +1,8 @@
 import java.util.Scanner;
 
 public class FiturLaporanPenjualan {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String jenisLayanan;
-        double hasildiDpt;
 
-        double[][] penjualan = new double[31][2];
-
+    public static void inputPenjualan(Scanner sc, double[][] penjualan) {
         while (true) {
             System.out.print("Masukkan tanggal (1-31) : ");
             int tanggal = sc.nextInt();
@@ -20,27 +15,53 @@ public class FiturLaporanPenjualan {
 
             System.out.println("Jenis layanan Potong atau Rias");
             System.out.print("Masukkan jenis layanan (Potong/Rias) : ");
-            jenisLayanan = sc.nextLine();
+            String jenisLayanan = sc.nextLine();
 
             if (!jenisLayanan.equalsIgnoreCase("Potong") && !jenisLayanan.equalsIgnoreCase("Rias")) {
                 System.out.println("Jenis layanan tidak valid. Harap masukkan Potong atau Rias.");
                 continue;
             }
 
-            System.out.print("Masukkan pendapatan hari ini : ");
-            hasildiDpt = sc.nextDouble();
-            sc.nextLine();
-
+            double hasildiDpt = inputPendapatan(sc);
             if (jenisLayanan.equals("Potong")) {
                 penjualan[tanggal - 1][0] = hasildiDpt;
             } else {
                 penjualan[tanggal - 1][1] = hasildiDpt;
             }
+
             System.out.print("Apakah Anda ingin memasukkan data? (y/n) : ");
             String lanjut = sc.nextLine();
             if (lanjut.equalsIgnoreCase("n")) {
-                break;  
+                break;
             }
         }
+    }
+
+    public static double inputPendapatan(Scanner sc) {
+        System.out.print("Masukkan pendapatan hari ini : ");
+        return sc.nextDouble();
+    }
+
+    public static double hitungTotalPendapatanBulanan(double[][] penjualan) {
+        double totalPendapatan = 0;
+
+        for (int i = 0; i < penjualan.length; i++) {
+            totalPendapatan += penjualan[i][0] + penjualan[i][1];
+        }
+
+        return totalPendapatan;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        double[][] penjualan = new double[31][2];
+
+        inputPenjualan(sc, penjualan);
+
+        double totalPendapatan = hitungTotalPendapatanBulanan(penjualan);
+        System.out.println("Total Pendapatan Bulan Ini: " + totalPendapatan);
+
+        sc.close();
     }
 }

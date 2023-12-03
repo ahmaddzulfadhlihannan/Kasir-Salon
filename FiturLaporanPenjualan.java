@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class FiturLaporanPenjualan {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -42,5 +41,15 @@ public class FiturLaporanPenjualan {
                 break;  
             }
         }
+
+        int totalPendapatanPotong = 0;
+        int totalPendapatanRias = 0;
+        for (int i = 0; i < 31; i++) {
+            totalPendapatanPotong += pendapatanPotong[i][0];
+            totalPendapatanRias += pendapatanRias[i][1];
+        }
+
+        System.out.println("Total pendapatan potong: " + totalPendapatanPotong);
+        System.out.println("Total pendapatan rias: " + totalPendapatanRias);
     }
 }

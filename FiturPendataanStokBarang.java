@@ -8,10 +8,10 @@ public class FiturPendataanStokBarang {
     static int[][] stok = new int[2][6];
 
     public static void main(String[] args) {
-        tampilkanMenu();
+        pengaturanStok();
     }
 
-    static void tampilkanMenu() {
+    static void pengaturanStok() {
         Scanner scanner = new Scanner(System.in);
         int pilihan;
         do {

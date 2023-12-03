@@ -53,6 +53,12 @@ public class FiturUtamaPembayaran {
         System.out.printf("Kembalian\t:\t%.2f\n", kembalian);
         System.out.println("----------Terima Kasih Telah Datang Ke Salon Kami----------");
 
+        // Perulangan untuk mencetak detail setiap jenis barang
+        for (int i = 0; i < jumlahJenis; i++) {
+            // Cetak informasi dari array seperti namaBarang, harga, jumlahBarang,
+            // totalHarga, dll.
+        }
+
         sc.close();
     }
 }

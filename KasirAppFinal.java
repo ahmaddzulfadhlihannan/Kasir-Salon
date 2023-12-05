@@ -203,6 +203,9 @@ public class KasirAppFinal {
                         pengaturanStok();
                         break;
                     case 0:
+                        System.out.println("\n====================================================");
+                        System.out.println("-----TERIMAKASIH TELAH MENGGUNAKAN SISTEM KASIR-----");
+                        System.out.println("====================================================");
                         kembaliKeLogin = false;
                         break;
                     default:

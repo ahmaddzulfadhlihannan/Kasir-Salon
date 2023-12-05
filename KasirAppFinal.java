@@ -212,11 +212,13 @@ public class KasirAppFinal {
 
     // Login karyawan kasir
     private static void login(Scanner sc, String[] userKaryawan, String[] passKaryawan,
-            String[] dataUserKaryawan, String[] dataPassKaryawan, int i) {
-        System.out.println("Aplikasi salon");
-        System.out.println("Login karyawan");
+        String[] dataUserKaryawan, String[] dataPassKaryawan, int i) {
+        System.out.println(" --------------------");
+        System.out.println("|   Aplikasi salon   |");
+        System.out.println(" --------------------");
+        System.out.print("\nLogin karyawan    : ");
         userKaryawan[i] = sc.next();
-        System.out.println("Masukkan password");
+        System.out.print("Masukkan password : ");
         passKaryawan[i] = sc.next();
         System.out.println("===============");
 
@@ -239,8 +241,12 @@ public class KasirAppFinal {
 
     // Tampilan menu fitur
     private static void tampilkanMenuUtama() {
-        System.out.println("Selamat datang di aplikasi salon");
-        System.out.println("Menu");
+        System.out.println("\n======================================");
+        System.out.println("|  Selamat datang di aplikasi salon  |");
+        System.out.println("======================================");
+        System.out.println("\n----------");
+        System.out.println("   Menu");
+        System.out.println("----------");
         System.out.println("1. Fitur transaksi");
         System.out.println("2. Membership");
         System.out.println("3. Laporan penjualan");

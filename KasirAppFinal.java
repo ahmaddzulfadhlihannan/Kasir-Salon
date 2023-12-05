@@ -11,6 +11,11 @@ public class KasirAppFinal {
         String dataPassKaryawan[] = { "ainssama", "diamlah", "subarashi", "ojisan", "dearinsaka", "tuanku" };
         int menu;
         boolean kembaliKeLogin = false;
+        String jenisLayanan;
+        double hasildiDpt;
+        double[][] penjualan = new double[31][2];
+        String nama, jenisBooking;
+        int jam, banyakOrang;
 
         for (int i = 0; i < penjualanHarian.length; i++) {
             login(sc, userKaryawan, passKaryawan, dataUserKaryawan, dataPassKaryawan, i);
@@ -76,6 +81,114 @@ public class KasirAppFinal {
                         break;
                     case 3:
                         // Tambahkan fitur laporan penjualan
+                        while (true) {
+                            System.out.print("Masukkan tanggal (1-31) : ");
+                            int tanggal = sc.nextInt();
+                            sc.nextLine();
+
+                            if (tanggal < 1 || tanggal > 31) {
+                                System.out.println("Tanggal tidak valid. Harap masukkan tanggal antara 1 hingga 31.");
+                                continue;
+                            }
+
+                            System.out.println("Jenis layanan Potong atau Rias");
+                            System.out.print("Masukkan jenis layanan (Potong/Rias) : ");
+                            jenisLayanan = sc.nextLine();
+
+                            if (!jenisLayanan.equalsIgnoreCase("Potong") && !jenisLayanan.equalsIgnoreCase("Rias")) {
+                                System.out.println("Jenis layanan tidak valid. Harap masukkan Potong atau Rias.");
+                                continue;
+                            }
+
+                            System.out.print("Masukkan pendapatan hari ini : ");
+                            hasildiDpt = sc.nextDouble();
+                            sc.nextLine();
+
+                            if (jenisLayanan.equals("Potong")) {
+                                penjualan[tanggal - 1][0] = hasildiDpt;
+                            } else {
+                                penjualan[tanggal - 1][1] = hasildiDpt;
+                            }
+                            System.out.print("Apakah Anda ingin memasukkan data? (y/n) : ");
+                            String lanjut = sc.nextLine();
+                            if (lanjut.equalsIgnoreCase("n")) {
+                                break;
+                            }
+                        }
+                        break;
+                    case 4:
+                        System.out.print("Masukkan banyak orang yang akan di rias atau potong: ");
+                        banyakOrang = sc.nextInt();
+
+                        int k = 0;
+
+                        while (k < banyakOrang) {
+                            System.out.println("Pilihan layanan yang akan di booking - Potong, Rias");
+                            System.out.print("Masukkan layanan orang ke-" + (k + 1) + "           : ");
+                            jenisBooking = sc.next();
+                            System.out.print("Masukkan nama orang yang akan booking : ");
+                            nama = sc.next();
+
+                            if (jenisBooking.equalsIgnoreCase("potong")) {
+                                System.out.println("Pilih jam booking mulai dari pukul 7 hingga 20");
+                                System.out.print("Masukkan jam booking                  : ");
+                                jam = sc.nextInt();
+                                System.out.println("Potong dibooking oleh " + nama + "Jam " + jam);
+                            } else if (jenisBooking.equalsIgnoreCase("rias")) {
+                                System.out.println("Pilih jam booking mulai dari pukul 7 hingga 20");
+                                System.out.print("Masukkan jam booking                  : ");
+                                jam = sc.nextInt();
+                                System.out.println("Rias dibooking oleh " + nama+ "Jam " + jam);
+                            } else {
+                                System.out.println("Inputan invalid");
+                                continue;
+                            }
+                            k++;
+                        }
+                        break;
+                    case 5:
+                        System.out.print("Total Pembelian : ");
+                        double totalPembelian = sc.nextDouble();
+
+                        System.out.println("Metode pembayaran :");
+                        System.out.println("1. Tunai");
+                        System.out.println("2. Non-Tunai");
+                        System.out.print("Pilih metode pembayaran (1/2) : ");
+                        int metodePembayaran = sc.nextInt();
+
+                        if (metodePembayaran == 1) {
+                            pembayaranTunai(totalPembelian);
+                        } else if (metodePembayaran == 2) {
+                            System.out.println("Pilih metode pembayaran Non-tunai :");
+                            System.out.println("1. Qris");
+                            System.out.println("2. Transfer Bank");
+                            System.out.print("Pilih metode pembayaran Non-Tunai (1/2) : ");
+                            int nonTunai = sc.nextInt();
+
+                            if (nonTunai == 1) {
+                                pembayaranQris(totalPembelian);
+                            } else if (nonTunai == 2) {
+                                pembayaranTransferBank(totalPembelian);
+                            } else {
+                                System.out.println("Pilihan tidak valid.");
+                            }
+                        } else {
+                            System.out.println("Pilihan tidak valid.");
+                        }
+                        break;
+                    case 6:
+                        // Variabel
+                        double totalHarga, bayar;
+                        // Input total pembelian
+                        System.out.print("Total Pembelian : ");
+                        totalHarga = sc.nextDouble();
+                        // Ketentuan diskon
+                        double potonganDiskon = Diskon(totalHarga);
+                        // Bayar
+                        bayar = totalHarga - potonganDiskon;
+                        // Riwayat diskon
+                        System.out.println("Potongan Diskon : " + potonganDiskon);
+                        System.out.println("Bayar : " + bayar);
                         break;
                     case 7:
                         pengaturanStok();
@@ -133,7 +246,7 @@ public class KasirAppFinal {
         System.out.println("3. Laporan penjualan");
         System.out.println("4. Booking");
         System.out.println("5. Sistem pembayaran");
-        System.out.println("6. Ketentuan diskon");
+        System.out.println("6. Diskon");
         System.out.println("7. Stok hari ini");
         System.out.println("0. Keluar");
         System.out.println("Pilih menu");
@@ -216,7 +329,7 @@ public class KasirAppFinal {
     static int[][] stok = new int[2][6];
 
     static void pengaturanStok() {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         int pilihan;
         boolean kembaliKeStok = false;
         do {
@@ -225,7 +338,7 @@ public class KasirAppFinal {
             System.out.println("2. Input Stok Barang");
             System.out.println("3. Keluar");
             System.out.print("Pilih menu (1-3): ");
-            pilihan = scanner.nextInt();
+            pilihan = sc.nextInt();
 
             switch (pilihan) {
                 case 1:
@@ -257,19 +370,55 @@ public class KasirAppFinal {
     }
 
     static void inputStok() {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
         System.out.println("Input Stok Barang:");
         for (int kategori = 0; kategori < kategoriBarang.length; kategori++) {
             System.out.println("Kategori: " + kategoriBarang[kategori]);
             for (int i = 0; i < barang[kategori].length; i++) {
                 System.out.print("Masukkan jumlah tambahan stok " + barang[kategori][i] + ": ");
-                int tambahanStok = scanner.nextInt();
+                int tambahanStok = sc.nextInt();
                 stok[kategori][i] += tambahanStok;
             }
             System.out.println();
         }
 
         System.out.println("Input stok berhasil.");
+    }
+
+    // Fungsi sistem pembayaran
+    public static void pembayaranTunai(double total) {
+        System.out.println("Pembayaran tunai dipilih.");
+        System.out.println("Total Pembelian : " + total);
+        System.out.println("Transaksi penjualan berhasil.");
+    }
+
+    public static void pembayaranQris(double total) {
+        System.out.println("Pembayaran non-tunai menggunakan Qris dipilih.");
+        System.out.println("Total Pembelian : " + total);
+        System.out.println("Pindai Qris untuk menyelesaikan pembayaran.");
+        System.out.println("Transaksi penjualan berhasil.");
+    }
+
+    public static void pembayaranTransferBank(double total) {
+        System.out.println("Pembayaran non-tunai menggunakan transfer bank dipilih.");
+        System.out.println("Total Pembelian : " + total);
+        System.out.println("Silakan transfer ke rekening yang tertera.");
+        System.out.println("Transaksi penjualan berhasil.");
+    }
+
+    // Diskon
+    public static double Diskon(double totalPembelian) {
+        double potonganDiskon;
+        if (totalPembelian >= 300000) {
+            potonganDiskon = totalPembelian * 0.15;
+        } else if (100000 <= totalPembelian) {
+            potonganDiskon = totalPembelian * 0.10;
+        } else if (60000 <= totalPembelian) {
+            potonganDiskon = totalPembelian * 0.05;
+        } else {
+            potonganDiskon = 0;
+        }
+        return potonganDiskon;
     }
 }

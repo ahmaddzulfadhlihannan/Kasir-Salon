@@ -7,10 +7,10 @@ public class KasirAppFinal {
         double penjualanHarian[] = new double[30];
         String userKaryawan[] = new String[30];
         String passKaryawan[] = new String[30];
-        String dataUserKaryawan[] = { "albedo", "ainz", "demiurge", "cocytus", "shaltear", "sebas" };
-        String dataPassKaryawan[] = { "ainssama", "diamlah", "subarashi", "ojisan", "dearinsaka", "tuanku" };
+        String dataUserKaryawan[] = { "Hannan", "Evan", "Ayu", "Ilut" };
+        String dataPassKaryawan[] = { "pass", "pass", "pass", "pass" };
         int menu;
-        boolean kembaliKeLogin = false;
+        boolean kembaliKeLogin = true;
         String jenisLayanan;
         double hasildiDpt;
         double[][] penjualan = new double[31][2];
@@ -18,13 +18,22 @@ public class KasirAppFinal {
         int jam, banyakOrang;
 
         for (int i = 0; i < penjualanHarian.length; i++) {
-            login(sc, userKaryawan, passKaryawan, dataUserKaryawan, dataPassKaryawan, i);
+            while (kembaliKeLogin) {
+                boolean validasiLogin = login(sc, userKaryawan, passKaryawan, dataUserKaryawan, dataPassKaryawan, i);
+                if (!validasiLogin) {
+                    System.out.println("Login gagal. Coba lagi");
+                    continue;
+                } else {
+                    break;
+                }
+            }
             do {
                 tampilkanMenuUtama();
                 menu = sc.nextInt();
 
                 switch (menu) {
                     case 1:
+                        System.out.println("Hari ke-" + (i + 1));
                         transaksi(sc, userKaryawan, i);
                         break;
                     case 2:
@@ -138,7 +147,7 @@ public class KasirAppFinal {
                                 System.out.println("Pilih jam booking mulai dari pukul 7 hingga 20");
                                 System.out.print("Masukkan jam booking                  : ");
                                 jam = sc.nextInt();
-                                System.out.println("Rias dibooking oleh " + nama+ "Jam " + jam);
+                                System.out.println("Rias dibooking oleh " + nama + "Jam " + jam);
                             } else {
                                 System.out.println("Inputan invalid");
                                 continue;
@@ -194,7 +203,7 @@ public class KasirAppFinal {
                         pengaturanStok();
                         break;
                     case 0:
-                        kembaliKeLogin = true;
+                        kembaliKeLogin = false;
                         break;
                     default:
                         System.out.println("Pilihan tidak valid. Silakan pilih menu yang sesuai.");
@@ -202,8 +211,10 @@ public class KasirAppFinal {
                 }
             } while (menu != 0);
 
-            if (kembaliKeLogin) {
-                kembaliKeLogin = false;
+            if (!kembaliKeLogin) {
+                kembaliKeLogin = true;
+                continue;
+                
             }
         }
 
@@ -211,8 +222,8 @@ public class KasirAppFinal {
     }
 
     // Login karyawan kasir
-    private static void login(Scanner sc, String[] userKaryawan, String[] passKaryawan,
-        String[] dataUserKaryawan, String[] dataPassKaryawan, int i) {
+    private static boolean login(Scanner sc, String[] userKaryawan, String[] passKaryawan,
+            String[] dataUserKaryawan, String[] dataPassKaryawan, int i) {
         System.out.println(" --------------------");
         System.out.println("|   Aplikasi salon   |");
         System.out.println(" --------------------");
@@ -222,12 +233,7 @@ public class KasirAppFinal {
         passKaryawan[i] = sc.next();
         System.out.println("===============");
 
-        boolean loginSukses = verifikasiLogin(userKaryawan[i], passKaryawan[i], dataUserKaryawan, dataPassKaryawan);
-
-        if (!loginSukses) {
-            System.out.println("Login gagal. Coba lagi.");
-            i--;
-        }
+        return verifikasiLogin(userKaryawan[i], passKaryawan[i], dataUserKaryawan, dataPassKaryawan);
     }
 
     private static boolean verifikasiLogin(String user, String pass, String[] dataUser, String[] dataPass) {
@@ -243,10 +249,9 @@ public class KasirAppFinal {
     private static void tampilkanMenuUtama() {
         System.out.println("\n======================================");
         System.out.println("|  Selamat datang di aplikasi salon  |");
-        System.out.println("======================================");
-        System.out.println("\n----------");
-        System.out.println("   Menu");
-        System.out.println("----------");
+        System.out.println("======================================\n");
+        System.out.println("    ----Menu----    ");
+        System.out.println("====================");
         System.out.println("1. Fitur transaksi");
         System.out.println("2. Membership");
         System.out.println("3. Laporan penjualan");
@@ -255,7 +260,7 @@ public class KasirAppFinal {
         System.out.println("6. Diskon");
         System.out.println("7. Stok hari ini");
         System.out.println("0. Keluar");
-        System.out.println("Pilih menu");
+        System.out.print("\nPilih menu : ");
     }
 
     // Fungsi fitur transaksi
@@ -310,7 +315,7 @@ public class KasirAppFinal {
         System.out.println("Struk Belanjaan");
         System.out.println("Kasir: " + kasir);
         System.out.println("==========================================================");
-        System.out.printf("| %-5s | %-20s | %-7s | %-15s |\n", "No.", "Item", "Jumlah", "Harga");
+        System.out.printf("| %-5s | %-20s | %-7s | %-15s \n", "No.", "Item", "Jumlah", "Harga");
         System.out.println("==========================================================");
 
         for (int k = 0; k < j; k++) {

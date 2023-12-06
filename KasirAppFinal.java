@@ -205,7 +205,7 @@ public class KasirAppFinal {
                     case 0:
                         System.out.println("\n====================================================");
                         System.out.println("-----TERIMAKASIH TELAH MENGGUNAKAN SISTEM KASIR-----");
-                        System.out.println("====================================================");
+                        System.out.println("====================================================\n");
                         kembaliKeLogin = false;
                         break;
                     default:
@@ -331,6 +331,9 @@ public class KasirAppFinal {
         System.out.printf("| %-28s : Rp%-15.2f |\n", "Uang Diterima", uangDiterima);
         System.out.printf("| %-28s : Rp%-15.2f |\n", "Uang Kembalian", (uangDiterima - totalHarga));
         System.out.println("==========================================================");
+        System.out.println("\n===========================================================");
+        System.out.println("---------TERIMA KASIH TELAH MENGUNJUNGI SALON KAMI---------");
+        System.out.println("===========================================================\n");
     }
 
     // Fungsi fitur pengaturan stok

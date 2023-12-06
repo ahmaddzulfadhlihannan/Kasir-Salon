@@ -15,7 +15,7 @@ public class FiturMembership {
         for (int i = 0; i < jumlahTransaksi; i++) {
             System.out.print("Membership atau bukan (transaksi ke-" + (i + 1) + "): ");
             member[i] = sc.next();
-
+            
             if (member[i].equalsIgnoreCase("membership") || member[i].equalsIgnoreCase("bukan")) {
                 System.out.print("Masukkan total harga pembelian (transaksi ke-" + (i + 1) + "): ");
                 totHarga[i] = sc.nextInt();
@@ -48,7 +48,7 @@ public class FiturMembership {
             }
 
             hargaAkhir[i] = (int) (totHarga[i] - (totHarga[i] * diskon[i]));
-            System.out.println("Total harga yang perlu dibayar (transaksi ke-" + (i + 1) + "): " + hargaAkhir[i]);
+            System.out.println("\nTotal harga yang perlu dibayar (transaksi ke-" + (i + 1) + "): " + hargaAkhir[i]);
         }
     }
 }

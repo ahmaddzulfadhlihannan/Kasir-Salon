@@ -132,6 +132,7 @@ public class KasirAppFinal {
                         int k = 0;
 
                         while (k < banyakOrang) {
+                            System.out.println("___________________________________________________");
                             System.out.println("Pilihan layanan yang akan di booking - Potong, Rias");
                             System.out.print("Masukkan layanan orang ke-" + (k + 1) + "           : ");
                             jenisBooking = sc.next();
@@ -142,12 +143,12 @@ public class KasirAppFinal {
                                 System.out.println("Pilih jam booking mulai dari pukul 7 hingga 20");
                                 System.out.print("Masukkan jam booking                  : ");
                                 jam = sc.nextInt();
-                                System.out.println("Potong dibooking oleh " + nama + "Jam " + jam);
+                                System.out.println("Potong dibooking oleh " + nama + " Jam " + jam + "\n");
                             } else if (jenisBooking.equalsIgnoreCase("rias")) {
                                 System.out.println("Pilih jam booking mulai dari pukul 7 hingga 20");
                                 System.out.print("Masukkan jam booking                  : ");
                                 jam = sc.nextInt();
-                                System.out.println("Rias dibooking oleh " + nama + "Jam " + jam);
+                                System.out.println("Rias dibooking oleh " + nama + " Jam " + jam + "\n");
                             } else {
                                 System.out.println("Inputan invalid");
                                 continue;
@@ -315,23 +316,23 @@ public class KasirAppFinal {
     private static void cetakStrukBelanjaan(String kasir, String[] namaJenisPelayanan, int[] nomorItem, int[] jumlah,
             double[] harga, int j, double totalHarga, double uangDiterima) {
         System.out.println("\n");
-        System.out.println("\n==========================================================");
+        System.out.println("\n===========================================================");
         System.out.println("Struk Belanjaan");
         System.out.println("Kasir: " + kasir);
-        System.out.println("==========================================================");
+        System.out.println("===========================================================");
         System.out.printf("| %-5s | %-20s | %-7s | %-15s \n", "No.", "Item", "Jumlah", "Harga");
-        System.out.println("==========================================================");
+        System.out.println("===========================================================");
 
         for (int k = 0; k < j; k++) {
             System.out.printf("| %-5d | %-20s | %-7d | Rp%-14.2f |\n",
                     k + 1, namaJenisPelayanan[nomorItem[k] - 1], jumlah[k], harga[k]);
         }
 
-        System.out.println("==========================================================");
+        System.out.println("===========================================================");
         System.out.printf("| %-28s : Rp%-15.2f |\n", "Total Harga", totalHarga);
         System.out.printf("| %-28s : Rp%-15.2f |\n", "Uang Diterima", uangDiterima);
         System.out.printf("| %-28s : Rp%-15.2f |\n", "Uang Kembalian", (uangDiterima - totalHarga));
-        System.out.println("==========================================================");
+        System.out.println("===========================================================");
         System.out.println("\n===========================================================");
         System.out.println("---------TERIMA KASIH TELAH MENGUNJUNGI SALON KAMI---------");
         System.out.println("===========================================================\n");

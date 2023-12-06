@@ -314,7 +314,8 @@ public class KasirAppFinal {
 
     private static void cetakStrukBelanjaan(String kasir, String[] namaJenisPelayanan, int[] nomorItem, int[] jumlah,
             double[] harga, int j, double totalHarga, double uangDiterima) {
-        System.out.println("==========================================================");
+        System.out.println("\n");
+        System.out.println("\n==========================================================");
         System.out.println("Struk Belanjaan");
         System.out.println("Kasir: " + kasir);
         System.out.println("==========================================================");
@@ -334,6 +335,7 @@ public class KasirAppFinal {
         System.out.println("\n===========================================================");
         System.out.println("---------TERIMA KASIH TELAH MENGUNJUNGI SALON KAMI---------");
         System.out.println("===========================================================\n");
+        System.out.println("\n");
     }
 
     // Fungsi fitur pengaturan stok
@@ -373,6 +375,7 @@ public class KasirAppFinal {
             }
         } while (!kembaliKeStok);
 
+        sc.close();
     }
 
     static void lihatStok() {
@@ -401,6 +404,7 @@ public class KasirAppFinal {
         }
 
         System.out.println("Input stok berhasil.");
+        sc.close();
     }
 
     // Fungsi sistem pembayaran

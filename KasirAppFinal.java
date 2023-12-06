@@ -51,8 +51,8 @@ public class KasirAppFinal {
                         for (int j = 0; j < jumlahTransaksi; j++) {
                             System.out.print("Membership atau bukan (transaksi ke-" + (j + 1) + "): ");
                             member[j] = sc.next();
-
-                            if (member[j].equalsIgnoreCase("membership") || member[i].equalsIgnoreCase("bukan")) {
+                            
+                            if (member[j].equalsIgnoreCase("membership") || member[j].equalsIgnoreCase("bukan")) {
                                 System.out.print("Masukkan total harga pembelian (transaksi ke-" + (j + 1) + "): ");
                                 totHarga[j] = sc.nextInt();
                             } else {
@@ -84,8 +84,7 @@ public class KasirAppFinal {
                             }
 
                             hargaAkhir[k] = (int) (totHarga[k] - (totHarga[k] * diskon[k]));
-                            System.out.println(
-                                    "Total harga yang perlu dibayar (transaksi ke-" + (k + 1) + "): " + hargaAkhir[k]);
+                            System.out.println("\nTotal harga yang perlu dibayar (transaksi ke-" + (k + 1) + "): " + hargaAkhir[k]);
                         }
                         break;
                     case 3:

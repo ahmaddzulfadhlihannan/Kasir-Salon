@@ -39,53 +39,83 @@ public class KasirAppFinal {
                         break;
                     case 2:
                         // Tambahkan fitur membership
-                        int jumlahTransaksi;
+                        System.out.println("Apakah Anda sudah menjadi anggota membership? (y/t)");
+                        String isMember = sc.next();
 
-                        System.out.print("Masukkan jumlah transaksi: ");
-                        jumlahTransaksi = sc.nextInt();
+                        String[][] memberNames = {
+                            {"evan", "ilut", "hanan", "ayu"}
+                        };
 
-                        String[] member = new String[jumlahTransaksi];
-                        int[] totHarga = new int[jumlahTransaksi];
-                        double[] diskon = new double[jumlahTransaksi];
-                        int[] hargaAkhir = new int[jumlahTransaksi];
+                        if (isMember.equalsIgnoreCase("y")) {
+                            System.out.print("Masukkan nama keanggotaan membership: ");
+                            String namaMember = sc.next();
 
-                        for (int j = 0; j < jumlahTransaksi; j++) {
-                            System.out.print("Membership atau bukan (transaksi ke-" + (j + 1) + "): ");
-                            member[j] = sc.next();
-                            
-                            if (member[j].equalsIgnoreCase("membership") || member[j].equalsIgnoreCase("bukan")) {
-                                System.out.print("Masukkan total harga pembelian (transaksi ke-" + (j + 1) + "): ");
-                                totHarga[j] = sc.nextInt();
-                            } else {
-                                System.out.println("Jenis keanggotaan tidak valid (transaksi ke-" + (j + 1) + ")");
-                                continue;
-                            }
-                        }
+                            System.out.print("Masukkan total harga pembelian: ");
+                            int totHarga = sc.nextInt();
 
-                        for (int k = 0; k < jumlahTransaksi; k++) {
-                            if (member[k].equalsIgnoreCase("membership")) {
-                                if (totHarga[k] >= 300000) {
-                                    diskon[k] = 0.2;
-                                } else if (totHarga[k] >= 100000) {
-                                    diskon[k] = 0.15;
-                                } else {
-                                    diskon[k] = 0;
-                                }
-                            } else if (member[k].equalsIgnoreCase("bukan")) {
-                                if (totHarga[k] >= 150000) {
-                                    diskon[k] = 0.02;
-                                } else if (totHarga[k] >= 80000) {
-                                    diskon[k] = 0.005;
-                                } else {
-                                    diskon[k] = 0;
-                                }
-                            } else {
-                                System.out.println("Bukan pelanggan (transaksi ke-" + (k + 1) + ")");
-                                continue;
+                            double diskon = 0;
+                            if (totHarga >= 300000) {
+                                diskon = 0.2;
+                            } else if (totHarga >= 100000) {
+                                diskon = 0.15;
                             }
 
-                            hargaAkhir[k] = (int) (totHarga[k] - (totHarga[k] * diskon[k]));
-                            System.out.println("\nTotal harga yang perlu dibayar (transaksi ke-" + (k + 1) + "): " + hargaAkhir[k]);
+                            int hargaAkhir = (int) (totHarga - (totHarga * diskon));
+
+                            System.out.println("Transaksi");
+                            System.out.println("Nama: " + namaMember);
+                            System.out.println("Total harga: " + totHarga);
+                            System.out.println("Diskon: " + diskon);
+                            System.out.println("Harga akhir: " + hargaAkhir);
+
+                        } else if (isMember.equalsIgnoreCase("t")) {
+                            System.out.println("Anda bukan member. Apakah ingin membuat member? (y/t)");
+                            String createMember = sc.next();
+
+                            if (createMember.equalsIgnoreCase("y")) {
+                                System.out.print("Masukkan nama keanggotaan membership: ");
+                                String namaMember = sc.next();
+
+                                System.out.println("Member berhasil dibuat!");
+                            }
+
+                            System.out.print("Masukkan total harga pembelian: ");
+                            int totHarga = sc.nextInt();
+
+                            double diskon = 0;
+                            if (totHarga >= 300000) {
+                                diskon = 0.2;
+                            } else if (totHarga >= 100000) {
+                                diskon = 0.15;
+                            }
+
+                            int hargaAkhir = (int) (totHarga - (totHarga * diskon));
+
+                            System.out.println("Transaksi");
+                            System.out.println("Total harga: " + totHarga);
+                            System.out.println("Diskon: " + diskon);
+                            System.out.println("Harga akhir: " + hargaAkhir);
+
+                        } else if (isMember.equalsIgnoreCase("t")) {
+                            System.out.print("Masukkan total harga pembelian: ");
+                            int totHarga = sc.nextInt();
+
+                            double diskon = 0;
+                            if (totHarga >= 150000) {
+                                diskon = 0.02;
+                            } else if (totHarga >= 80000) {
+                                diskon = 0.005;
+                            }
+
+                            int hargaAkhir = (int) (totHarga - (totHarga * diskon));
+
+                            System.out.println("Transaksi");
+                            System.out.println("Total harga: " + totHarga);
+                            System.out.println("Diskon: " + diskon);
+                            System.out.println("Harga akhir: " + hargaAkhir);
+
+                        } else {
+                            System.out.println("Input tidak valid");
                         }
                         break;
                     case 3:
@@ -132,8 +162,8 @@ public class KasirAppFinal {
                             totalPendapatanRias += penjualan[l][1];
                         }
                 
-                        System.out.println("\nTotal pendapatan Potong selama bulan : " + totalPendapatanPotong);
-                        System.out.println("Total pendapatan Rias selama bulan : " + totalPendapatanRias + "\n");
+                        System.out.println("\nTotal pendapatan Potong hingga hari ini : " + totalPendapatanPotong);
+                        System.out.println("Total pendapatan Rias hingga hari ini    : " + totalPendapatanRias + "\n");
                         break;
                     case 4:
                         System.out.print("Masukkan banyak orang yang akan di rias atau potong: ");
@@ -331,7 +361,6 @@ public class KasirAppFinal {
         
 
         System.out.println("Total Harga: Rp" + totalHarga);
-    
 
         System.out.print("Uang diterima: Rp");
         double uangDiterima = sc.nextDouble();
@@ -340,13 +369,12 @@ public class KasirAppFinal {
 
         System.out.println("Cetak struk? (y/t)");
         String cetakStruk = sc.next();
-  
+
         if (cetakStruk.equalsIgnoreCase("y")) {
             cetakStrukBelanjaan(userKaryawan[i], namaJenisPelayanan, nomorItem, jumlah, harga, j, totalHarga,
                     uangDiterima);
         }
     }
-    
 
     private static void cetakStrukBelanjaan(String kasir, String[] namaJenisPelayanan, int[] nomorItem, int[] jumlah,
             double[] harga, int j, double totalHarga, double uangDiterima) {

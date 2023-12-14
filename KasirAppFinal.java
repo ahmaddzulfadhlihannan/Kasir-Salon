@@ -296,7 +296,31 @@ public class KasirAppFinal {
             j++;
         } while (nomorItem[j - 1] != 0);
 
+        // Input diskon
+
+        System.out.print("Apakah hari khusus? (y/t) : ");
+        String isDiskon = sc.next();
+        double potonganDiskon = 0;
+        
+        if (isDiskon.equalsIgnoreCase("y")) {
+            if (totalHarga >= 300000) {
+                potonganDiskon = totalHarga * 0.15;
+            } else if (100000 <= totalHarga) {
+                potonganDiskon = totalHarga * 0.10;
+            } else if (60000 <= totalHarga) {
+                potonganDiskon = totalHarga * 0.05;
+            } else {
+                potonganDiskon = 0;
+            }
+        } else {
+            potonganDiskon = 0;
+        }
+
+        totalHarga -= potonganDiskon;
+        
+
         System.out.println("Total Harga: Rp" + totalHarga);
+    
 
         System.out.print("Uang diterima: Rp");
         double uangDiterima = sc.nextDouble();
@@ -305,12 +329,13 @@ public class KasirAppFinal {
 
         System.out.println("Cetak struk? (y/t)");
         String cetakStruk = sc.next();
-
+  
         if (cetakStruk.equalsIgnoreCase("y")) {
             cetakStrukBelanjaan(userKaryawan[i], namaJenisPelayanan, nomorItem, jumlah, harga, j, totalHarga,
                     uangDiterima);
         }
     }
+    
 
     private static void cetakStrukBelanjaan(String kasir, String[] namaJenisPelayanan, int[] nomorItem, int[] jumlah,
             double[] harga, int j, double totalHarga, double uangDiterima) {

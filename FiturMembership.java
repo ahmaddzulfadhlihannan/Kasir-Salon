@@ -34,7 +34,7 @@ public class FiturMembership {
             System.out.println("Harga akhir: " + hargaAkhir);
 
         } else if (isMember.equalsIgnoreCase("t")) {
-            System.out.println("Anda tidak menjadi member. Apakah ingin membuat member? (y/t)");
+            System.out.println("Anda bukan member. Apakah ingin membuat member? (y/t)");
             String createMember = sc.next();
 
             if (createMember.equalsIgnoreCase("y")) {

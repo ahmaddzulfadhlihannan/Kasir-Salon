@@ -30,6 +30,7 @@ public class KasirAppFinal {
             do {
                 tampilkanMenuUtama();
                 menu = sc.nextInt();
+                System.out.println("__________________________\n");
 
                 switch (menu) {
                     case 1:
@@ -123,6 +124,16 @@ public class KasirAppFinal {
                                 break;
                             }
                         }
+                        double totalPendapatanPotong = 0;
+                        double totalPendapatanRias = 0;
+
+                        for (int l = 0; l < 31; l++) {
+                            totalPendapatanPotong += penjualan[l][0];
+                            totalPendapatanRias += penjualan[l][1];
+                        }
+                
+                        System.out.println("\nTotal pendapatan Potong selama bulan : " + totalPendapatanPotong);
+                        System.out.println("Total pendapatan Rias selama bulan : " + totalPendapatanRias + "\n");
                         break;
                     case 4:
                         System.out.print("Masukkan banyak orang yang akan di rias atau potong: ");
@@ -234,7 +245,7 @@ public class KasirAppFinal {
         userKaryawan[i] = sc.next();
         System.out.print("Masukkan password : ");
         passKaryawan[i] = sc.next();
-        System.out.println("===============");
+        System.out.println("==================");
 
         return verifikasiLogin(userKaryawan[i], passKaryawan[i], dataUserKaryawan, dataPassKaryawan);
     }

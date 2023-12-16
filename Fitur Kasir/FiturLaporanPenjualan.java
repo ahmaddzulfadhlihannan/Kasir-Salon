@@ -42,14 +42,15 @@ public class FiturLaporanPenjualan {
             }
         }
 
-        int totalPendapatanPotong = 0;
-        int totalPendapatanRias = 0;
+        double totalPendapatanPotong = 0;
+        double totalPendapatanRias = 0;
+
         for (int i = 0; i < 31; i++) {
-            totalPendapatanPotong += pendapatanPotong[i][0];
-            totalPendapatanRias += pendapatanRias[i][1];
+            totalPendapatanPotong += penjualan[i][0];
+            totalPendapatanRias += penjualan[i][1];
         }
 
-        System.out.println("Total pendapatan potong: " + totalPendapatanPotong);
-        System.out.println("Total pendapatan rias: " + totalPendapatanRias);
+        System.out.println("\nTotal pendapatan Potong hingga hari ini : " + totalPendapatanPotong);
+        System.out.println("Total pendapatan Rias hingga hari ini    : " + totalPendapatanRias + "\n");
     }
 }

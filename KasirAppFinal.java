@@ -361,14 +361,14 @@ public class KasirAppFinal {
         totalHarga -= potonganDiskon;
         
 
-        System.out.println("Potongan diskon: Rp." + potonganDiskon);
+        System.out.println("Potongan diskon : Rp." + potonganDiskon);
 
-        System.out.println("Total Harga: Rp." + totalHarga);
+        System.out.println("Total Harga     : Rp." + totalHarga);
 
-        System.out.print("Uang diterima: Rp.");
+        System.out.print("Uang diterima   : Rp.");
         double uangDiterima = sc.nextDouble();
 
-        System.out.println("Uang Kembalian: Rp." + (uangDiterima - totalHarga));
+        System.out.println("Uang Kembalian  : Rp." + (uangDiterima - totalHarga));
 
         System.out.println("Cetak struk? (y/t)");
         String cetakStruk = sc.next();
@@ -481,22 +481,22 @@ public class KasirAppFinal {
     }
 
     // Fungsi sistem pembayaran
-    public static void pembayaranTunai(double total) {
-        System.out.println("Pembayaran tunai dipilih.");
-        System.out.println("Total Pembelian : " + total);
+    public static void pembayaranTunai(double totalHarga) {
+        System.out.println("Pembayaran tunai.");
+        System.out.println("Total Pembelian : " + totalHarga);
         System.out.println("Transaksi penjualan berhasil.");
     }
 
-    public static void pembayaranQris(double total) {
-        System.out.println("Pembayaran non-tunai menggunakan Qris dipilih.");
-        System.out.println("Total Pembelian : " + total);
+    public static void pembayaranQris(double totalHarga) {
+        System.out.println("Pembayaran non-tunai menggunakan Qris.");
+        System.out.println("Total Pembelian : " + totalHarga);
         System.out.println("Pindai Qris untuk menyelesaikan pembayaran.");
         System.out.println("Transaksi penjualan berhasil.");
     }
 
-    public static void pembayaranTransferBank(double total) {
-        System.out.println("Pembayaran non-tunai menggunakan transfer bank dipilih.");
-        System.out.println("Total Pembelian : " + total);
+    public static void pembayaranTransferBank(double totalHarga) {
+        System.out.println("Pembayaran non-tunai menggunakan transfer bank.");
+        System.out.println("Total Pembelian : " + totalHarga);
         System.out.println("Silakan transfer ke rekening yang tertera.");
         System.out.println("Transaksi penjualan berhasil.");
     }

@@ -39,6 +39,8 @@ public class KasirAppFinal {
                         break;
                     case 2:
                         // Tambahkan fitur membership
+                        Scanner member = new Scanner(System.in);
+
                         System.out.println("Apakah Anda sudah menjadi anggota membership? (y/t)");
                         String isMember = sc.next();
 
@@ -50,20 +52,21 @@ public class KasirAppFinal {
                             System.out.print("Masukkan nama keanggotaan membership: ");
                             String namaMember = sc.next();
 
-                            double totalPembelian = inputTotalPembelian();
+                            System.out.print("Masukkan total harga pembelian: ");
+                            int totHarga = sc.nextInt();
 
                             double diskon = 0;
-                            if (totalPembelian >= 300000) {
+                            if (totHarga >= 300000) {
                                 diskon = 0.2;
-                            } else if (totalPembelian >= 100000) {
+                            } else if (totHarga >= 100000) {
                                 diskon = 0.15;
                             }
 
-                            int hargaAkhir = (int) (totalPembelian - (totalPembelian * diskon));
+                            int hargaAkhir = (int) (totHarga - (totHarga * diskon));
 
                             System.out.println("Transaksi");
                             System.out.println("Nama: " + namaMember);
-                            System.out.println("Total harga: " + totalPembelian);
+                            System.out.println("Total harga: " + totHarga);
                             System.out.println("Diskon: " + diskon);
                             System.out.println("Harga akhir: " + hargaAkhir);
 
@@ -78,36 +81,38 @@ public class KasirAppFinal {
                                 System.out.println("Member berhasil dibuat!");
                             }
 
-                            double totalPembelian = inputTotalPembelian();
+                            System.out.print("Masukkan total harga pembelian: ");
+                            int totHarga = sc.nextInt();
 
                             double diskon = 0;
-                            if (totalPembelian >= 300000) {
+                            if (totHarga >= 300000) {
                                 diskon = 0.2;
-                            } else if (totalPembelian >= 100000) {
+                            } else if (totHarga >= 100000) {
                                 diskon = 0.15;
                             }
 
-                            int hargaAkhir = (int) (totalPembelian - (totalPembelian * diskon));
+                            int hargaAkhir = (int) (totHarga - (totHarga * diskon));
 
                             System.out.println("Transaksi");
-                            System.out.println("Total harga: " + totalPembelian);
+                            System.out.println("Total harga: " + totHarga);
                             System.out.println("Diskon: " + diskon);
                             System.out.println("Harga akhir: " + hargaAkhir);
 
                         } else if (isMember.equalsIgnoreCase("t")) {
-                            double totalPembelian = inputTotalPembelian();
+                            System.out.print("Masukkan total harga pembelian: ");
+                            int totHarga = sc.nextInt();
 
                             double diskon = 0;
-                            if (totalPembelian >= 150000) {
+                            if (totHarga >= 150000) {
                                 diskon = 0.02;
-                            } else if (totalPembelian >= 80000) {
+                            } else if (totHarga >= 80000) {
                                 diskon = 0.005;
                             }
 
-                            int hargaAkhir = (int) (totalPembelian - (totalPembelian * diskon));
+                            int hargaAkhir = (int) (totHarga - (totHarga * diskon));
 
                             System.out.println("Transaksi");
-                            System.out.println("Total harga: " + totalPembelian);
+                            System.out.println("Total harga: " + totHarga);
                             System.out.println("Diskon: " + diskon);
                             System.out.println("Harga akhir: " + hargaAkhir);
 

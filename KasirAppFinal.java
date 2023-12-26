@@ -21,7 +21,7 @@ public class KasirAppFinal {
             while (kembaliKeLogin) {
                 boolean validasiLogin = login(sc, userKaryawan, passKaryawan, dataUserKaryawan, dataPassKaryawan, i);
                 if (!validasiLogin) {
-                    System.out.println("Login gagal. Coba lagi");
+                    System.out.println("Login gagal. Coba lagi\n");
                     continue;
                 } else {
                     break;
@@ -131,7 +131,7 @@ public class KasirAppFinal {
                             System.out.print("Masukkan jenis layanan (Potong/Rias) : ");
                             jenisLayanan = sc.nextLine();
 
-                            if (!jenisLayanan.equalsIgnoreCase("Potong") && !jenisLayanan.equalsIgnoreCase("Rias")) {
+                            if (!jenisLayanan.equalsIgnoreCase("Potong") || !jenisLayanan.equalsIgnoreCase("Rias")) {
                                 System.out.println("Jenis layanan tidak valid. Harap masukkan Potong atau Rias.");
                                 continue;
                             }
@@ -356,25 +356,26 @@ public class KasirAppFinal {
         totalHarga -= potonganDiskon;
         
 
-        System.out.println("Total Harga: Rp" + totalHarga);
+        System.out.println("Potongan diskon: Rp." + potonganDiskon);
 
-        System.out.print("Uang diterima: Rp");
+        System.out.println("Total Harga: Rp." + totalHarga);
+
+        System.out.print("Uang diterima: Rp.");
         double uangDiterima = sc.nextDouble();
 
-        System.out.println("Uang Kembalian: Rp" + (uangDiterima - totalHarga));
+        System.out.println("Uang Kembalian: Rp." + (uangDiterima - totalHarga));
 
         System.out.println("Cetak struk? (y/t)");
         String cetakStruk = sc.next();
 
         if (cetakStruk.equalsIgnoreCase("y")) {
             cetakStrukBelanjaan(userKaryawan[i], namaJenisPelayanan, nomorItem, jumlah, harga, j, totalHarga,
-                    uangDiterima);
+                    uangDiterima, potonganDiskon);
         }
     }
 
     private static void cetakStrukBelanjaan(String kasir, String[] namaJenisPelayanan, int[] nomorItem, int[] jumlah,
-            double[] harga, int j, double totalHarga, double uangDiterima) {
-        System.out.println("\n");
+            double[] harga, int j, double totalHarga, double uangDiterima, double potonganDiskon) {
         System.out.println("\n===========================================================");
         System.out.println("Struk Belanjaan");
         System.out.println("Kasir: " + kasir);
@@ -383,14 +384,15 @@ public class KasirAppFinal {
         System.out.println("===========================================================");
 
         for (int k = 0; k < j; k++) {
-            System.out.printf("| %-5d | %-20s | %-7d | Rp%-14.2f |\n",
+            System.out.printf("| %-5d | %-20s | %-7d | Rp.%-11.2f |\n",
                     k + 1, namaJenisPelayanan[nomorItem[k] - 1], jumlah[k], harga[k]);
         }
 
         System.out.println("===========================================================");
-        System.out.printf("| %-28s : Rp%-15.2f |\n", "Total Harga", totalHarga);
-        System.out.printf("| %-28s : Rp%-15.2f |\n", "Uang Diterima", uangDiterima);
-        System.out.printf("| %-28s : Rp%-15.2f |\n", "Uang Kembalian", (uangDiterima - totalHarga));
+        System.out.printf("| %-28s : Rp.%-21.2f |\n", "Potongan diskon", potonganDiskon);
+        System.out.printf("| %-28s : Rp.%-21.2f |\n", "Total Harga", totalHarga);
+        System.out.printf("| %-28s : Rp.%-21.2f |\n", "Uang Diterima", uangDiterima);
+        System.out.printf("| %-28s : Rp.%-21.2f |\n", "Uang Kembalian", (uangDiterima - totalHarga));
         System.out.println("===========================================================");
         System.out.println("\n===========================================================");
         System.out.println("---------TERIMA KASIH TELAH MENGUNJUNGI SALON KAMI---------");
@@ -443,7 +445,7 @@ public class KasirAppFinal {
         System.out.print("Masukkan Total Harga Pembelian : ");
         return sc.nextDouble();
     }
-
+    
     static void lihatStok() {
         System.out.println("Stok Barang:");
         for (int kategori = 0; kategori < kategoriBarang.length; kategori++) {

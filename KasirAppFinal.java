@@ -79,45 +79,45 @@ public class KasirAppFinal {
                                 String namaMember = sc.next();
 
                                 System.out.println("Member berhasil dibuat!");
+
+                                System.out.print("Masukkan total harga pembelian: ");
+                                int totHarga = sc.nextInt();
+
+                                double diskon = 0;
+                                if (totHarga >= 300000) {
+                                    diskon = 0.2;
+                                } else if (totHarga >= 100000) {
+                                    diskon = 0.15;
+                                }
+
+                                int hargaAkhir = (int) (totHarga - (totHarga * diskon));
+
+                                System.out.println("Transaksi");
+                                System.out.println("Total harga: " + totHarga);
+                                System.out.println("Diskon: " + diskon);
+                                System.out.println("Harga akhir: " + hargaAkhir);
+
+                            } else if (createMember.equalsIgnoreCase("t")) {
+                                System.out.print("Masukkan total harga pembelian: ");
+                                int totHarga = sc.nextInt();
+
+                                double diskon = 0;
+                                if (totHarga >= 150000) {
+                                    diskon = 0.02;
+                                } else if (totHarga >= 80000) {
+                                    diskon = 0.005;
+                                }
+
+                                int hargaAkhir = (int) (totHarga - (totHarga * diskon));
+
+                                System.out.println("Transaksi");
+                                System.out.println("Total harga: " + totHarga);
+                                System.out.println("Diskon: " + diskon);
+                                System.out.println("Harga akhir: " + hargaAkhir);
+
+                            } else {
+                                System.out.println("Input tidak valid");
                             }
-
-                            System.out.print("Masukkan total harga pembelian: ");
-                            int totHarga = sc.nextInt();
-
-                            double diskon = 0;
-                            if (totHarga >= 300000) {
-                                diskon = 0.2;
-                            } else if (totHarga >= 100000) {
-                                diskon = 0.15;
-                            }
-
-                            int hargaAkhir = (int) (totHarga - (totHarga * diskon));
-
-                            System.out.println("Transaksi");
-                            System.out.println("Total harga: " + totHarga);
-                            System.out.println("Diskon: " + diskon);
-                            System.out.println("Harga akhir: " + hargaAkhir);
-
-                        } else if (isMember.equalsIgnoreCase("t")) {
-                            System.out.print("Masukkan total harga pembelian: ");
-                            int totHarga = sc.nextInt();
-
-                            double diskon = 0;
-                            if (totHarga >= 150000) {
-                                diskon = 0.02;
-                            } else if (totHarga >= 80000) {
-                                diskon = 0.005;
-                            }
-
-                            int hargaAkhir = (int) (totHarga - (totHarga * diskon));
-
-                            System.out.println("Transaksi");
-                            System.out.println("Total harga: " + totHarga);
-                            System.out.println("Diskon: " + diskon);
-                            System.out.println("Harga akhir: " + hargaAkhir);
-
-                        } else {
-                            System.out.println("Input tidak valid");
                         }
                         break;
                     case 3:
@@ -136,7 +136,7 @@ public class KasirAppFinal {
                             System.out.print("Masukkan jenis layanan (Potong/Rias) : ");
                             jenisLayanan = sc.nextLine();
 
-                            if (!jenisLayanan.equalsIgnoreCase("Potong") || !jenisLayanan.equalsIgnoreCase("Rias")) {
+                            if (!jenisLayanan.equalsIgnoreCase("Potong") && !jenisLayanan.equalsIgnoreCase("Rias")) {
                                 System.out.println("Jenis layanan tidak valid. Harap masukkan Potong atau Rias.");
                                 continue;
                             }
@@ -145,9 +145,9 @@ public class KasirAppFinal {
                             hasildiDpt = sc.nextDouble();
                             sc.nextLine();
 
-                            if (jenisLayanan.equals("Potong")) {
+                            if (jenisLayanan.equalsIgnoreCase("Potong")) {
                                 penjualan[tanggal - 1][0] = hasildiDpt;
-                            } else {
+                            } else if (jenisLayanan.equalsIgnoreCase("Rias")) {
                                 penjualan[tanggal - 1][1] = hasildiDpt;
                             }
                             System.out.print("Apakah Anda ingin memasukkan data? (y/n) : ");
@@ -405,6 +405,12 @@ public class KasirAppFinal {
         System.out.println("\n");
     }
 
+    public static double inputTotalPembelian() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Masukkan Total Harga Pembelian : ");
+        return sc.nextDouble();
+    }
+
     // Fungsi fitur pengaturan stok
     static String[] kategoriBarang = { "Perawatan Rambut", "Rias Wajah" };
     static String[][] barang = {
@@ -425,6 +431,7 @@ public class KasirAppFinal {
             System.out.println("3. Keluar");
             System.out.print("Pilih menu (1-3): ");
             pilihan = sc.nextInt();
+            System.out.println("\n");
 
             switch (pilihan) {
                 case 1:
@@ -442,13 +449,6 @@ public class KasirAppFinal {
             }
         } while (!kembaliKeStok);
 
-        sc.close();
-    }
-
-    public static double inputTotalPembelian() {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Masukkan Total Harga Pembelian : ");
-        return sc.nextDouble();
     }
     
     static void lihatStok() {
@@ -476,8 +476,7 @@ public class KasirAppFinal {
             System.out.println();
         }
 
-        System.out.println("Input stok berhasil.");
-        sc.close();
+        System.out.println("Input stok berhasil.\n");
     }
 
     // Fungsi sistem pembayaran

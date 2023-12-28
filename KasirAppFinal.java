@@ -28,7 +28,7 @@ public class KasirAppFinal {
                 }
             }
             do {
-                tampilkanMenuUtama(i);
+                tampilkanMenuUtama();
                 menu = sc.nextInt();
                 System.out.println("__________________________\n");
 
@@ -295,7 +295,6 @@ public class KasirAppFinal {
         System.out.println("\n======================================");
         System.out.println("|  Selamat datang di aplikasi salon  |");
         System.out.println("======================================\n");
-        System.out.println("Hari ke-" + (i + 1));
         System.out.println("    ----Menu----    ");
         System.out.println("====================");
         System.out.println("1. Fitur transaksi");
